@@ -1,25 +1,38 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+import { ProgressBar } from './components';
+
+import {
+	HeaderContainer,
+	ImageGridContainer,
+	UploadFormContainer,
+} from './container';
+import Modal from './components/Modal';
+
+const App = () => {
+	console.log('process.env.REACT_APP_APIKEY', process.env.REACT_APP_APIKEY);
+
+	const [selected, setSelected] = useState(null);
+
+	const [modalImg, setModalImg] = useState(null);
+
+	const [err, setErr] = useState(null);
+	return (
+		<>
+			<HeaderContainer />
+			<UploadFormContainer
+				err={err}
+				setErr={setErr}
+				selected={selected}
+				setSelected={setSelected}
+			/>
+			{selected && (
+				<ProgressBar selected={selected} setSelected={setSelected} />
+			)}
+			<ImageGridContainer setModalImg={setModalImg} />
+			{modalImg && <Modal setModalImg={setModalImg} modalImg={modalImg} />}
+		</>
+	);
+};
 
 export default App;
