@@ -15,8 +15,11 @@ const ImageContainer = ({ setModalImg }) => {
 				{images &&
 					images.map((img, i) => {
 						return (
-							<ImageGrid.ImageItem key={i}>
+							<ImageGrid.ImageItem layout key={i} whileHover={{ opacity: 1 }}>
 								<ImageGrid.Image
+									initial={{ opacity: 0 }}
+									animate={{ opacity: 1 }}
+									transition={{ delay: 1 }}
 									onClick={() => handleClick(img)}
 									src={img.url}
 								/>

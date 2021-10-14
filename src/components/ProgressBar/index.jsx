@@ -30,7 +30,11 @@ const ProgressBar = ({ selected, setSelected }) => {
 
 	return (
 		<Container>
-			<Inner animate progress={progress} />
+			<Inner
+				initial={{ width: 0 }}
+				animate={{ width: `${progress}%` }}
+				progress={progress}
+			/>
 		</Container>
 	);
 };

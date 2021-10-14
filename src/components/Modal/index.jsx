@@ -1,7 +1,8 @@
+import { motion } from 'framer-motion';
 import React from 'react';
 import styled from 'styled-components';
 
-const BackDrop = styled.div`
+const BackDrop = styled(motion.div)`
 	position: fixed;
 	height: 100vh;
 	z-index: 10000;
@@ -12,7 +13,7 @@ const BackDrop = styled.div`
 	background-color: rgba(0, 0, 0, 0.8);
 `;
 
-const Image = styled.img`
+const Image = styled(motion.img)`
 	display: block;
 	margin: 60px auto;
 	max-width: 90%;
@@ -22,8 +23,16 @@ const Image = styled.img`
 
 const Modal = ({ modalImg, setModalImg }) => {
 	return (
-		<BackDrop onClick={() => setModalImg(null)}>
-			<Image src={modalImg.url} alt='modal' />
+		<BackDrop
+			initial={{ opacity: 0 }}
+			animate={{ opacity: 1 }}
+			onClick={() => setModalImg(null)}>
+			<Image
+				initial={{ y: '-100vh' }}
+				animate={{ y: 0 }}
+				src={modalImg.url}
+				alt='modal'
+			/>
 		</BackDrop>
 	);
 };

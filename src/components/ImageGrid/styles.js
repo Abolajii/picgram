@@ -30,9 +30,10 @@ export const ImageItem = styled(motion.div)`
 	width: 300px;
 	padding: 50% 0;
 	position: relative;
+	opacity: 0.8;
 `;
 
-export const Image = styled.img`
+export const Image = styled(motion.img)`
 	position: absolute;
 	top: 0;
 	left: 0;
